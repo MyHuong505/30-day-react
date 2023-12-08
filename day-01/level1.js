@@ -336,3 +336,26 @@ function likeProduct (productId, userId){
 }
 
 likeProduct('eedfcf','fg12cy')
+
+const userIdGeneratedByUser = () => {
+  const getInput = (message) => parseInt(prompt(message), 10);
+
+  const charCount = getInput('Nhập số ký tự cho mỗi ID:');
+  const idCount = getInput('Nhập số lượng ID cần tạo:');
+
+  if (!(charCount > 0 && idCount > 0)) {
+    return alert('Đầu vào không hợp lệ. Vui lòng nhập số dương hợp lệ.');
+  }
+
+  const generateUserId = (length) => Array.from({ length }, () => characters[Math.floor(Math.random() * characters.length)]).join('');
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  Array.from({ length: idCount }, (_, i) => console.log(`ID người dùng ${i + 1}: ${generateUserId(charCount)}`));
+};
+
+userIdGeneratedByUser();
+
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+const random = characters[Math.floor(Math.random()*(characters.length +1))]
+console.log(random)
+
