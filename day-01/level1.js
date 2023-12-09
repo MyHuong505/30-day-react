@@ -282,80 +282,104 @@ const people = [
 
 // a. Create a function called rateProduct which rates the product
 
-function rateProduct(userId,productId,newRating){
-    const product = products.find(p => p._id===productId)
-    if (product){
-        const existingRating = product.ratings.find(r => r.userId === userId)
-        if (existingRating) {
-            existingRating.rate = newRating
-            console.log('New rating updated')
+// function rateProduct(userId,productId,newRating){
+//     const product = products.find(p => p._id===productId)
+//     if (product){
+//         const existingRating = product.ratings.find(r => r.userId === userId)
+//         if (existingRating) {
+//             existingRating.rate = newRating
+//             console.log('New rating updated')
 
-    } else {
-        product.ratings.push({userId: userId, rate: newRating})
-        console.log('Rating successfully')
-    }
-    }
-}
+//     } else {
+//         product.ratings.push({userId: userId, rate: newRating})
+//         console.log('Rating successfully')
+//     }
+//     }
+// }
 
-//b. Create a function called averageRating which calculate the average rating of a product
+// //b. Create a function called averageRating which calculate the average rating of a product
 
-rateProduct('zwf8md','hedfcg',4.8)
+// rateProduct('zwf8md','hedfcg',4.8)
 
-function averageRating(productId){
-    const product = products.find(p => p._id === productId)
-    if (product && product.ratings.length>0){
-        const totalRaings = product.ratings.length;
-        const sumRatings = product.ratings.reduce((sum, rating) => sum + rating.rate,0)
-        const average = sumRatings/totalRaings;
-        console.log(`Average rating for product ${productId}: ${average}`)
-    }
-    else {
-        console.log('No ratings found')
-    }
-} 
+// function averageRating(productId){
+//     const product = products.find(p => p._id === productId)
+//     if (product && product.ratings.length>0){
+//         const totalRaings = product.ratings.length;
+//         const sumRatings = product.ratings.reduce((sum, rating) => sum + rating.rate,0)
+//         const average = sumRatings/totalRaings;
+//         console.log(`Average rating for product ${productId}: ${average}`)
+//     }
+//     else {
+//         console.log('No ratings found')
+//     }
+// } 
 
-averageRating('hedfcg')
+// averageRating('hedfcg')
 
 
 //Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
 
-function likeProduct (productId, userId){
-    const product = products.find(p => p._id === productId)
-    if (product){
-        const userLiked = product.likes.find(likedUser => likedUser === userId)
-        if (!userLiked){
-            product.likes.push(userId);
-            console.log(`${userId} has liked the product ${productId}`)
-        } else {
-            product.likes = product.likes.filter(likedUser => likedUser !== userId)
-            console.log(`${userId} has removed the like from the product ${productId}`)
-        }
-    } else {
-        console.log('Product not found')
-    }
-}
+// function likeProduct (productId, userId){
+//     const product = products.find(p => p._id === productId)
+//     if (product){
+//         const userLiked = product.likes.find(likedUser => likedUser === userId)
+//         if (!userLiked){
+//             product.likes.push(userId);
+//             console.log(`${userId} has liked the product ${productId}`)
+//         } else {
+//             product.likes = product.likes.filter(likedUser => likedUser !== userId)
+//             console.log(`${userId} has removed the like from the product ${productId}`)
+//         }
+//     } else {
+//         console.log('Product not found')
+//     }
+// }
 
-likeProduct('eedfcf','fg12cy')
+// likeProduct('eedfcf','fg12cy')
+
+
+//Declare a function name userIdGeneratedByUser. It doesn’t take any parameter but it takes two inputs using prompt(). 
+//One of the input is the number of characters and the second input is the number of ids which are supposed to be generated.
+// const userIdGeneratedByUser = () => {
+//   const getInput = (message) => parseInt(prompt(message), 10);
+
+//   const charCount = getInput('Nhập số ký tự cho mỗi ID:');
+//   const idCount = getInput('Nhập số lượng ID cần tạo:');
+
+//   if (!(charCount > 0 && idCount > 0)) {
+//     return alert('Đầu vào không hợp lệ. Vui lòng nhập số dương hợp lệ.');
+//   }
+
+//   const generateUserId = (length) => Array.from({ length }, () => characters[Math.floor(Math.random() * characters.length)]).join('');
+//   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+//   Array.from({ length: idCount }, (_, i) => console.log(`ID người dùng ${i + 1}: ${generateUserId(charCount)}`));
+// };
+
+// userIdGeneratedByUser();
 
 const userIdGeneratedByUser = () => {
-  const getInput = (message) => parseInt(prompt(message), 10);
-
-  const charCount = getInput('Nhập số ký tự cho mỗi ID:');
-  const idCount = getInput('Nhập số lượng ID cần tạo:');
+  const charCount = parseInt(prompt('Nhập số ký tự cho mỗi ID:'), 10);
+  const idCount = parseInt(prompt('Nhập số lượng ID cần tạo:'), 10);
 
   if (!(charCount > 0 && idCount > 0)) {
-    return alert('Đầu vào không hợp lệ. Vui lòng nhập số dương hợp lệ.');
+    console.log('Invalid input. Please enter valid positive numbers.');
+    return;
   }
 
-  const generateUserId = (length) => Array.from({ length }, () => characters[Math.floor(Math.random() * characters.length)]).join('');
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const generateUserId = (length) => {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  };
 
-  Array.from({ length: idCount }, (_, i) => console.log(`ID người dùng ${i + 1}: ${generateUserId(charCount)}`));
+  for (let i = 0; i < idCount; i++) {
+    console.log(`User ID ${i + 1}: ${generateUserId(charCount)}`);
+  }
 };
 
 userIdGeneratedByUser();
-
-const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-const random = characters[Math.floor(Math.random()*(characters.length +1))]
-console.log(random)
 
