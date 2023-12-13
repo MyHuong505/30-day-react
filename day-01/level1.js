@@ -358,28 +358,44 @@ const people = [
 
 // userIdGeneratedByUser();
 
-const userIdGeneratedByUser = () => {
-  const charCount = parseInt(prompt('Nhập số ký tự cho mỗi ID:'), 10);
-  const idCount = parseInt(prompt('Nhập số lượng ID cần tạo:'), 10);
+// const userIdGeneratedByUser = () => {
+//   const charCount = parseInt(prompt('Nhập số ký tự cho mỗi ID:'), 10);
+//   const idCount = parseInt(prompt('Nhập số lượng ID cần tạo:'), 10);
 
-  if (!(charCount > 0 && idCount > 0)) {
-    console.log('Invalid input. Please enter valid positive numbers.');
-    return;
-  }
+//   if (!(charCount > 0 && idCount > 0)) {
+//     console.log('Invalid input. Please enter valid positive numbers.');
+//     return;
+//   }
 
-  const generateUserId = (length) => {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-  };
+//   const generateUserId = (length) => {
+//     let result = '';
+//     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//     for (let i = 0; i < length; i++) {
+//       result += characters.charAt(Math.floor(Math.random() * characters.length));
+//     }
+//     return result;
+//   };
 
-  for (let i = 0; i < idCount; i++) {
-    console.log(`User ID ${i + 1}: ${generateUserId(charCount)}`);
-  }
-};
+//   for (let i = 0; i < idCount; i++) {
+//     console.log(`User ID ${i + 1}: ${generateUserId(charCount)}`);
+//   }
+// };
 
-userIdGeneratedByUser();
+// userIdGeneratedByUser();
+
+//  const sumAllnums = (...args) => {
+//   let sum = 0;
+//   for (const num of args) {
+//     sum += num
+//   }
+//   return sum
+//  }
+
+//  console.log(sumAllnums(1,2,3,4,5))
+ 
+
+//  let sumOfNums = 0;
+//  numbers.forEach(e => sumOfNums +=e)
+// const sumOfNums = numbers.reduce((sum, e) => sum += e, 0)
+//  console.log(sumOfNums)
 
