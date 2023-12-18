@@ -399,3 +399,115 @@ const people = [
 // const sumOfNums = numbers.reduce((sum, e) => sum += e, 0)
 //  console.log(sumOfNums)
 
+// const rectangle = {
+//   width: 20,
+//   height: 10,
+// }
+
+// let { width: w, height: h } = rectangle
+// console.log(w, h) 
+
+
+// //Destructuring function
+// const person = {
+//   firstName: 'Asabeneh',
+//   lastName: 'Yetayeh',
+//   age: 250,
+//   country: 'Finland',
+//   job: 'Instructor and Developer',
+//   skills: [
+//     'HTML',
+//     'CSS',
+//     'JavaScript',
+//     'React',
+//     'Redux',
+//     'Node',
+//     'MongoDB',
+//     'Python',
+//     'D3.js',
+//   ],
+//   languages: ['Amharic', 'English', 'Suomi(Finnish)'],
+// }
+
+// /*
+// Asabeneh Yetayeh lives in Finland. He is  250 years old. He is an Instructor and Developer. He teaches HTML, CSS, JavaScript, React, Redux, Node, MongoDB, Python and D3.js. He speaks Amharic, English and a little bit of Suomi(Finnish)
+// */
+
+// function getPersonInfo(personInf) {
+//   const { firstName, lastName, age, country, job, skills, languages} = personInf;
+//   return `${firstName} ${lastName} lives in ${country}. He is ${age} yrs. He knows ${skills.join(', ')}`;
+// }
+
+// console.log(getPersonInfo(person));
+
+// const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// let [num1, num2, num3, ...rest] = nums
+
+// console.log(num1, num2, num3)
+// console.log(rest)
+
+
+const fruits = [
+  { product: 'banana', price: 3 },
+  { product: 'mango', price: 6 },
+  { product: 'potato', price: ' ' },
+  { product: 'avocado', price: 8 },
+  { product: 'coffee', price: 10 },
+  { product: 'tea', price: '' },
+]
+
+// fruits.forEach((item) => {
+//   if (item.price > 0){
+//     console.log(`The price of ${item.product} is ${item.price}`)
+//   } else {  
+//     console.log(`The price of ${item.product} is unknown`)
+//   }
+// })
+
+// //Calculate the sum of all the prices using forEach
+// let totalPrice = 0
+// fruits.forEach((item) => {
+//   if (typeof item.price === 'number' && !isNaN(item.price)){
+//     totalPrice += item.price
+//   }
+// })
+// console.log(totalPrice) 
+
+// //Create an array of prices using map and store it in a variable prices
+// const prices = fruits.map(item => item.price)
+// console.log(prices)
+
+// //Filter products with prices
+
+// const fruitsWprices = fruits.filter(item => typeof item.price === 'number' && !isNaN(item.price))
+// console.log(fruitsWprices)
+
+// //Use method chaining to get the sum of the prices(map, filter, reduce)
+
+// const sumPrice = fruits
+//   .map(item => parseFloat(item.price))
+//   .filter(price => !isNaN(price))
+//   .reduce((acc, curr) => acc + curr, 0)
+
+// console.log(sumPrice)
+
+//Calculate the sum of all the prices using reduce only
+// let Price = fruits.filter(item => !isNaN(parseFloat((item.price))))
+// console.log(Price)
+// const calPrice = Price.reduce((acc, item) => 
+//   acc += item.price
+// , 0)
+// console.log(calPrice)
+
+const calPrice = fruits.reduce((acc, item) => {
+  const price = parseFloat(item.price) || 0;
+  return acc + price
+},0)
+console.log(calPrice)
+
+//Find the first product which doesn't have a price value
+console.log(fruits.find(item => typeof item.price !== 'number'))
+
+//Find the index of the first product which does not have price value
+console.log(fruits.findIndex(item => typeof item.price !== 'number'))
+
