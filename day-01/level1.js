@@ -499,15 +499,81 @@ const fruits = [
 // , 0)
 // console.log(calPrice)
 
-const calPrice = fruits.reduce((acc, item) => {
-  const price = parseFloat(item.price) || 0;
-  return acc + price
-},0)
-console.log(calPrice)
+// const calPrice = fruits.reduce((acc, item) => {
+//   const price = parseFloat(item.price) || 0;
+//   return acc + price
+// },0)
+// console.log(calPrice)
 
-//Find the first product which doesn't have a price value
-console.log(fruits.find(item => typeof item.price !== 'number'))
+// //Find the first product which doesn't have a price value
+// console.log(fruits.find(item => typeof item.price !== 'number'))
 
-//Find the index of the first product which does not have price value
-console.log(fruits.findIndex(item => typeof item.price !== 'number'))
+// //Find the index of the first product which does not have price value
+// console.log(fruits.findIndex(item => typeof item.price !== 'number'))
 
+
+// Create an Animal class. The class will have name, age, color, legs properties and create different m
+
+
+
+class Animal {
+  constructor(name, age, color, legs) {
+    this.name = name;
+    this.age = age;
+    this.color = color;
+    this.legs = legs;
+  }
+
+  // Method to display information about the animal
+  displayInfo() {
+    console.log(`Name: ${this.name}, Age: ${this.age}, Color: ${this.color}, Legs: ${this.legs}`);
+  }
+
+  // Method to make the animal sound
+  makeSound(sound) {
+    console.log(`${this.name} makes a ${sound} sound`);
+  }
+}
+
+// Create an instance of the Animal class
+const lion = new Animal('Lion', 5, 'golden', 4);
+lion.displayInfo(); // Output: Name: Lion, Age: 5, Color: golden, Legs: 4
+lion.makeSound('roaring');
+
+class Dog extends Animal {
+  constructor(name, age, color, legs, breed) {
+    super(name, age, color, legs);
+    this.breed = breed;
+  }
+
+  // Method to wag tail
+  wagTail() {
+    console.log(`${this.name} wags tail happily`);
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, age, color, legs, breed) {
+    super(name, age, color, legs);
+    this.breed = breed;
+  }
+
+  // Method to purr
+  purr() {
+    console.log(`${this.name} purrs softly`);
+  }
+}
+
+// Create instances of Dog and Cat classes
+const dog = new Dog('Buddy', 3, 'brown', 4, 'Golden Retriever');
+const cat = new Cat('Whiskers', 2, 'gray', 4, 'Persian');
+
+dog.displayInfo(); // Output: Name: Buddy, Age: 3, Color: brown, Legs: 4
+dog.makeSound('barking'); // Output: Buddy makes a barking sound
+dog.wagTail(); // Output: Buddy wags tail happily
+
+cat.displayInfo(); // Output: Name: Whiskers, Age: 2, Color: gray, Legs: 4
+cat.makeSound('meowing'); // Output: Whiskers makes a meowing sound
+cat.purr(); 
+
+//Override the method you create in Animal class
